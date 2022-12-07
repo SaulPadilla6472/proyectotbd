@@ -1,0 +1,33 @@
+body{
+    background: linear-gradient(90deg, rgba(7,3,82,1) 0%, rgba(8,8,190,1) 45%, rgba(64,160,180,1) 100%);
+
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    border-bottom: 1px darkblue solid;
+    background: rgb(7,3,82);
+}
+header img{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+#password{
+    background-color: white;
+    margin-top: 10%;
+    width: 35%;
+}
+#login{
+    margin-top: 15px;
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+}
+
+#alerta1{
+    position: fixed;
+    display: none;
+}

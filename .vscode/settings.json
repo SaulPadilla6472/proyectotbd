@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8a32e260-76a9-4d1a-aa10-9fdb0757ea27/AppServices/subscriptions/8a32e260-76a9-4d1a-aa10-9fdb0757ea27/resourceGroups/proyectotbd/providers/Microsoft.Web/sites/proyectotbd",
+    "appService.deploySubpath": "."
+}

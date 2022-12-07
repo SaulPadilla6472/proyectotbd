@@ -1,0 +1,48 @@
+header{
+    height: 10vh;
+    width: 99%;
+    border-bottom: 1px darkblue solid;
+    background: linear-gradient(90deg, rgba(7,3,82,1) 0%, rgba(8,8,190,1) 45%, rgba(64,160,180,1) 100%);
+    color: white;
+}
+
+aside{
+    height:85vh;
+    width: 20vw;
+    display: inline-flex;
+    flex-direction: column;
+    border-bottom: 1px darkblue solid;
+    background: linear-gradient(90deg, rgba(7,3,82,1) 0%, rgba(8,8,190,1) 45%, rgba(64,160,180,1) 100%);
+    color: white;
+}
+
+main{
+    display: inline-flex;
+}
+
+
+footer{
+    height: 5vh;
+    position: absolute;
+}
+
+#finalizar{
+    display: inline-block;
+    margin-left: 68vw;
+    position: fixed;
+    margin-top: 75vh;
+}
+
+#agregar{
+    margin-left: 70vw;
+    position: fixed;
+    
+}
+.btn_aside{
+    height: 17vh;
+}
+
+#crud{
+    display: flex;
+    flex-direction: column;
+}
