@@ -4,15 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
+var cors = require('cors')
 
+var apiinventario = require('./apiinventario')
 var apiarticulo = require('./apiarticulo')
-var apilogin = require('./apilogin')
-var login = require('./routes/login')
-var search = require('./routes/search')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,10 +31,14 @@ app.use(
 )
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.get('/login', apilogin.getUsers);
-app.get('/login/:user', apilogin.loginUser);
 app.get('/articulo/:codigo', apiarticulo.getArticulo);
+app.use('/inv', apiinventario.getInventario);
+app.use('/inv', apiinventario.refresh);
+app.get('/articulo/:codigo', apiarticulo.getArticulo);
+app.use('/borrar', apiarticulo.finalizarventa)
+app.use('/suma', apiarticulo.preciototal)
+app.use('/venta_actual', apiarticulo.obtenertabla)
+
 
 
 

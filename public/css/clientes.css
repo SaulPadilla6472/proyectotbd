@@ -17,31 +17,7 @@ aside{
 }
 
 main{
-    display: inline-block;
-
-}
-
-
-footer{
-    height: 5vh;
-    position: absolute;
-}
-
-#finalizar{
-margin-left: 20vw;
-}
-
-#divagregar{
-    display: block;
-}
-
-#codigo{
-    display: inline-block;
-}
-
-#agregar{
-    
-    
+    display: inline-flex;
 }
 
 @property --myColor1 {
@@ -65,30 +41,4 @@ margin-left: 20vw;
 .btn_aside:hover{
     --myColor1: rgba(13,13,48,1);
     --myColor2: rgba(30,113,158,1);
-}
-
-#crud{
-    display: flex;
-    flex-direction: column;
-}
-
-
-.Id{
-
-    width: 5vw;
-}
-
-.Codigo{
-
-    width: 15vw;
-}
-
-.Nombre{
-
-    width: 15vw;
-}
-
-.Precio{
-
-    width:7vw ;
 }
