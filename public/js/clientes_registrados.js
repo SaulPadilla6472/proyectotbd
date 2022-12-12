@@ -41,17 +41,10 @@ let proveedores = document.getElementById('Proveedores')
     window.location.assign('proveedores.html')
 })
 
-let agregar_proovedor = document.getElementById('agregar_proveedor')
-agregar_proovedor.addEventListener('click', function()
-{
-  window.location.assign('agregar_proovedor.html')
-})
 
+let tabla = document.getElementById('client')
 
-
-let tabla = document.getElementById('prov')
-
-fetch(`http://localhost:3000/prov`)
+fetch(`https://proyectotbd.azurewebsites.net/cliente`)
     .then((response) => {
       return response.json();
     })
@@ -63,26 +56,23 @@ fetch(`http://localhost:3000/prov`)
         let col3 = document.createElement('td');
         let col4 = document.createElement('td');
         let col5 = document.createElement('td');
-        let col6 = document.createElement('td');
         col1.className = "Id"
-        col2.className = "Tipo_persona"
-        col3.className = "Nombre"
-        col4.className = "Direccion"
-        col5.className = "Telefono"
-        col6.className = "Email"
+        col2.className = "Nombre"
+        col3.className = "Direcccion"
+        col4.className = "Telefono"
+        col5.className = "Email"
     
-        col1.innerHTML = `${producto.id_proveedor}`     
-        col2.innerHTML = `${producto.tipo_persona}` 
-        col3.innerHTML = `${producto.nombre}` 
-        col4.innerHTML = `${producto.dirección}`    
-        col5.innerHTML = `${producto.telefono}` 
-        col6.innerHTML = `${producto.email}` 
+        col1.innerHTML = `${producto.id_cliente}`     
+        col2.innerHTML = `${producto.nombre}` 
+        col3.innerHTML = `${producto.direccion}` 
+        col4.innerHTML = `${producto.telefono}`    
+        col5.innerHTML = `${producto.email}` 
+
     
         fila.append(col1);
         fila.append(col2);
         fila.append(col3);
         fila.append(col4);
         fila.append(col5);
-        fila.append(col6);
         tabla.append(fila);
     })})

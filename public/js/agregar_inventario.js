@@ -41,32 +41,31 @@ let proveedores = document.getElementById('Proveedores')
     window.location.assign('proveedores.html')
 })
 
-let ver_clientes = document.getElementById('ver_clientes')
-ver_clientes.addEventListener('click', function()
-{
-  window.location.assign('clientes_registrados.html')
-})
 
 
 let enviar = document.getElementById('enviar')
 enviar.addEventListener('click', function()
 {
 console.log('Presionado')
-let id_cliente = document.getElementById('id_cliente').value;
+let id_producto = document.getElementById('id_producto').value;
+let id_categoria = document.getElementById('id_categoria').value;
+let codigo = document.getElementById('codigo').value;
 let nombre = document.getElementById('nombre').value;
-let direccion = document.getElementById('direccion').value;
-let telefono = document.getElementById('telefono').value;
-let email = document.getElementById('email').value;
+let precio = document.getElementById('precio').value;
+let stock = document.getElementById('stock').value;
+let id_proveedor = document.getElementById('id_proveedor').value;
 
 let datos = {
-  id_cliente: parseInt(id_cliente,10),
+  id_articulo: parseInt(id_producto,10),
+  id_categoria: parseInt(id_categoria,10),
+  codigo: codigo,
   nombre: nombre, 
-  direccion: direccion,
-  telefono: telefono,
-  email: email
+  precio_venta: parseInt(precio,10),
+  stock: parseInt(stock,10),
+  id_proveedor: parseInt(id_proveedor,10)
 }
 console.log(datos)
-fetch('https://proyectotbd.azurewebsites.net/cliente', {
+fetch('https://proyectotbd.azurewebsites.net/agregar_articulo', {
    method: 'POST',
    body: JSON.stringify(datos),
    headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -83,42 +82,45 @@ fetch('https://proyectotbd.azurewebsites.net/cliente', {
 let eliminar = document.getElementById('eliminar')
 eliminar.addEventListener('click', function()
 {
-  codigo = document.getElementById('id_cliente').value
-fetch(`https://proyectotbd.azurewebsites.net/cliente_eliminar/${codigo}`)
+  codigo = document.getElementById('id_producto').value
+fetch(`https://proyectotbd.azurewebsites.net/articulo_eliminar/${codigo}`)
     .then((response) => {
       return response.json();
     })
   })
 
-  let actualizar = document.getElementById('actualizar')
-  actualizar.addEventListener('click', function()
-  {
-  console.log('Presionado')
-  let id_cliente = document.getElementById('id_cliente').value;
-  let nombre = document.getElementById('nombre').value;
-  let direccion = document.getElementById('direccion').value;
-  let telefono = document.getElementById('telefono').value;
-  let email = document.getElementById('email').value;
-  
-  let datos = {
-    nombre: nombre, 
-    direccion: direccion,
-    telefono: telefono,
-    email: email
-  }
-  console.log(datos)
-  fetch(`https://proyectotbd.azurewebsites.net/actualizar_cliente/${id_cliente}`, {
-     method: 'PUT',
-     body: JSON.stringify(datos),
-     headers: {"Content-type": "application/json; charset=UTF-8"}
-  })
-  .then(function(response) {
-     if(response.ok) {
-         console.log('exito')
-     } else {
-         console.log("Fallo");
-     }
-  })
-  })
 
+let actualizar = document.getElementById('actualizar')
+actualizar.addEventListener('click', function()
+{
+console.log('Presionado')
+let id_producto = document.getElementById('id_producto').value;
+let id_categoria = document.getElementById('id_categoria').value;
+let codigo = document.getElementById('codigo').value;
+let nombre = document.getElementById('nombre').value;
+let precio = document.getElementById('precio').value;
+let stock = document.getElementById('stock').value;
+let id_proveedor = document.getElementById('id_proveedor').value;
 
+let datos = {
+  id_categoria: parseInt(id_categoria,10),
+  codigo: codigo,
+  nombre: nombre, 
+  precio_venta: parseInt(precio,10),
+  stock: parseInt(stock,10),
+  id_proveedor: parseInt(id_proveedor,10)
+}
+console.log(datos)
+fetch(`https://proyectotbd.azurewebsites.net/actualizar_articulo/${id_producto}`, {
+   method: 'PUT',
+   body: JSON.stringify(datos),
+   headers: {"Content-type": "application/json; charset=UTF-8"}
+})
+.then(function(response) {
+   if(response.ok) {
+       console.log('exito')
+   } else {
+       console.log("Fallo");
+   }
+})
+})

@@ -25,7 +25,46 @@ const refresh = (request, response) => {
     })
   }
 
+  const addArticulo = (request, response) => {
+    const { id_articulo, id_categoria, codigo, nombre, precio_venta,stock , id_proveedor} = request.body
+  
+    pool.query('insert into articulo  (id_articulo, id_categoria, codigo, nombre, precio_venta, stock, id_proveedor) values ($1, $2, $3, $4, $5, $6, $7)', [id_articulo, id_categoria, codigo, nombre, precio_venta,stock , id_proveedor], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(201).send(`Articulo agregado con exito`)
+    })
+  }
+
+  const borrarArticulo = (request, response) => {
+    const codigo = parseInt(request.params.codigo)
+  
+    pool.query('DELETE FROM articulo WHERE id_articulo = $1', [codigo], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).send(`Articulo eliminado con exito`)
+    })
+  }
+  const updateArticulo = (request, response) => {
+    const id = parseInt(request.params.id)
+    const { id_categoria, codigo, nombre,precio_venta ,stock ,id_proveedor} = request.body
+  
+    pool.query(
+      'UPDATE articulo SET id_categoria = $1, codigo = $2 , nombre = $3 , precio_venta = $4 , stock = $5 , id_proveedor = $6 where id_articulo = $7',
+      [id_categoria, codigo, nombre,precio_venta ,stock ,id_proveedor, id],
+      (error, results) => {
+        if (error) {
+          throw error
+        }
+        response.status(200).send(`Articulo modificado con exito`)
+      }
+    )
+  }
   module.exports = {
     refresh, 
     getInventario,
+    addArticulo,
+    borrarArticulo,
+    updateArticulo,
   }

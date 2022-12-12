@@ -144,3 +144,19 @@ let proveedores = document.getElementById('Proveedores')
   proveedores.addEventListener("click", function(){
     window.location.assign('proveedores.html')
 })
+
+let eliminar = document.getElementById('eliminar')
+eliminar.addEventListener('click', function()
+{
+  codigo = document.getElementById('codigo').value
+fetch(`http://localhost:3000/articulo_cancelar/${codigo}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((inv) => {
+      inv.map(function(producto) {
+    })
+  })
+  setTimeout(location.reload(), 1000);
+
+  })

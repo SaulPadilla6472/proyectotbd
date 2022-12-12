@@ -43,11 +43,21 @@ const obtenertabla = (request, response) =>{
     response.status(200).json(results.rows)
   })
 }
+const cancelarArticulo = (request, response) => {
+  const codigo = parseInt(request.params.codigo)
 
+  pool.query('DELETE FROM venta_actual WHERE id = $1', [codigo], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).send(`Articulo eliminado con exito`)
+  })
+}
 
 module.exports = {
     getArticulo, 
     finalizarventa,
     preciototal,
     obtenertabla,
+    cancelarArticulo,
   }

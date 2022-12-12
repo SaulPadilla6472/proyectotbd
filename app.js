@@ -6,6 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
+var apiclientes = require('./apiclientes')
+var apiproveedor = require('./apiproveedor')
 var apiinventario = require('./apiinventario')
 var apiarticulo = require('./apiarticulo')
 var indexRouter = require('./routes/index');
@@ -38,6 +40,24 @@ app.get('/articulo/:codigo', apiarticulo.getArticulo);
 app.use('/borrar', apiarticulo.finalizarventa)
 app.use('/suma', apiarticulo.preciototal)
 app.use('/venta_actual', apiarticulo.obtenertabla)
+app.use('/prov', apiproveedor.getProveedores)
+app.get('/cliente', apiclientes.getClientes)
+app.post('/cliente', apiclientes.addCliente)
+app.get('/cliente_eliminar/:id', apiclientes.borrarCliente)
+app.post('/agregar_articulo', apiinventario.addArticulo)
+app.get('/articulo_eliminar/:codigo', apiinventario.borrarArticulo)
+app.post('/agregar_proveedor', apiproveedor.addProveedor)
+app.get('/proveedor_eliminar/:id', apiproveedor.borrarProveedor)
+app.get('/articulo_cancelar/:codigo', apiarticulo.cancelarArticulo)
+app.put('/actualizar_articulo/:id', apiinventario.updateArticulo)
+app.put('/actualizar_proveedor/:id', apiproveedor.updateProveedor)
+app.put('/actualizar_cliente/:id', apiclientes.updateCliente)
+
+
+
+
+
+
 
 
 

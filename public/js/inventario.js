@@ -41,6 +41,10 @@ let proveedores = document.getElementById('Proveedores')
     window.location.assign('proveedores.html')
 })
 
+let agregar_inventario = document.getElementById('agregar_inventario')
+agregar_inventario.addEventListener("click", function(){
+    window.location.assign('agregar_inventario.html')
+})
 
 let tabla = document.getElementById('inv')
 

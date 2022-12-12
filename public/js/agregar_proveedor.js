@@ -41,32 +41,27 @@ let proveedores = document.getElementById('Proveedores')
     window.location.assign('proveedores.html')
 })
 
-let ver_clientes = document.getElementById('ver_clientes')
-ver_clientes.addEventListener('click', function()
-{
-  window.location.assign('clientes_registrados.html')
-})
-
-
 let enviar = document.getElementById('enviar')
 enviar.addEventListener('click', function()
 {
 console.log('Presionado')
-let id_cliente = document.getElementById('id_cliente').value;
+let id_proveedor = document.getElementById('id_proveedor').value;
 let nombre = document.getElementById('nombre').value;
+let tipo_persona = document.getElementById('tipo_persona').value;
 let direccion = document.getElementById('direccion').value;
 let telefono = document.getElementById('telefono').value;
 let email = document.getElementById('email').value;
 
 let datos = {
-  id_cliente: parseInt(id_cliente,10),
-  nombre: nombre, 
-  direccion: direccion,
+  id_proveedor: parseInt(id_proveedor,10),
+  nombre: nombre,
+  tipo_persona: tipo_persona,
+  direccion: direccion, 
   telefono: telefono,
   email: email
 }
 console.log(datos)
-fetch('https://proyectotbd.azurewebsites.net/cliente', {
+fetch('https://proyectotbd.azurewebsites.net/agregar_proveedor', {
    method: 'POST',
    body: JSON.stringify(datos),
    headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -83,42 +78,43 @@ fetch('https://proyectotbd.azurewebsites.net/cliente', {
 let eliminar = document.getElementById('eliminar')
 eliminar.addEventListener('click', function()
 {
-  codigo = document.getElementById('id_cliente').value
-fetch(`https://proyectotbd.azurewebsites.net/cliente_eliminar/${codigo}`)
+  codigo = document.getElementById('id_proveedor').value
+fetch(`https://proyectotbd.azurewebsites.net/proveedor_eliminar/${codigo}`)
     .then((response) => {
       return response.json();
     })
   })
 
-  let actualizar = document.getElementById('actualizar')
-  actualizar.addEventListener('click', function()
-  {
-  console.log('Presionado')
-  let id_cliente = document.getElementById('id_cliente').value;
-  let nombre = document.getElementById('nombre').value;
-  let direccion = document.getElementById('direccion').value;
-  let telefono = document.getElementById('telefono').value;
-  let email = document.getElementById('email').value;
-  
-  let datos = {
-    nombre: nombre, 
-    direccion: direccion,
-    telefono: telefono,
-    email: email
-  }
-  console.log(datos)
-  fetch(`https://proyectotbd.azurewebsites.net/actualizar_cliente/${id_cliente}`, {
-     method: 'PUT',
-     body: JSON.stringify(datos),
-     headers: {"Content-type": "application/json; charset=UTF-8"}
-  })
-  .then(function(response) {
-     if(response.ok) {
-         console.log('exito')
-     } else {
-         console.log("Fallo");
-     }
-  })
-  })
 
+let actualizar = document.getElementById('actualizar')
+actualizar.addEventListener('click', function()
+{
+console.log('Presionado')
+let id_proveedor = document.getElementById('id_proveedor').value;
+let nombre = document.getElementById('nombre').value;
+let tipo_persona = document.getElementById('tipo_persona').value;
+let direccion = document.getElementById('direccion').value;
+let telefono = document.getElementById('telefono').value;
+let email = document.getElementById('email').value;
 
+let datos = {
+  nombre: nombre,
+  tipo_persona: tipo_persona,
+  direccion: direccion, 
+  telefono: telefono,
+  email: email
+}
+console.log(datos)
+fetch(`https://proyectotbd.azurewebsites.net/actualizar_proveedor/${id_proveedor}`, {
+   method: 'PUT',
+   body: JSON.stringify(datos),
+   headers: {"Content-type": "application/json; charset=UTF-8"}
+})
+.then(function(response) {
+   if(response.ok) {
+       console.log('exito')
+   } else {
+       console.log("Fallo");
+   }
+})
+})

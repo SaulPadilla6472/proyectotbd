@@ -17,8 +17,7 @@ aside{
 }
 
 main{
-    display: inline-flex;
-    flex-direction: column;
+    display: inline-block;
 }
 
 @property --myColor1 {
@@ -44,9 +43,31 @@ main{
     --myColor2: rgba(30,113,158,1);
 }
 
-.divagregar{
-    display: block;
-    
-    padding-bottom: 15px;
+#client{
+position: absolute;
 }
 
+.Id{
+
+    width: 5vw;
+}
+
+.Direccion{
+
+    width: 15vw;
+}
+
+.Nombre{
+
+    width: 15vw;
+}
+
+.Telefono{
+
+    width:15vw ;
+}
+
+.Email{
+
+    width:15vw ;
+}

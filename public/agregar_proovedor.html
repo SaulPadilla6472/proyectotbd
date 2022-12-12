@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Punto de venta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href= "css/inventario.css">
+    <link rel="stylesheet" href= "css/agregar_proveedor.css">
 </head>
 <body>
     <header>
@@ -29,27 +29,34 @@
     </aside>
 
     <main>
-        <div>
-            <button id="agregar_inventario">Agregar nuevo articulo</button>
+        <div class="divagregar">
+            Ingrese el id del proveedor: <input type="text" id="id_proveedor">
+            <button id="enviar">Agregar</button>
+            <button id="actualizar">Actualizar</button>
         </div>
-        <table  id="inv">
-            <thead>
-              <tr>
-                <th class="Id">Id</th>
-                <th class="Codigo">Codigo</th>
-                <th class="Nombre">Nombre</th>
-                <th class="Categoria">Categoria</th>
-                <th class="Precio">Precio</th>
-                <th class="Stock">Stock</th>
-                <th class="Proveedor">Proveedor</th>
-              </tr>
-            </thead>
-            <tbody class="cuerpo" >
-            </tbody>
-            </table>
+        <div class="divagregar">
+            Ingrese el nombre del proveedor: <input type="text" id="nombre">
+        </div>
+        <div class="divagregar">
+            Ingrese el tipo de persona del proveedor: <input type="text" id="tipo_persona">
+        </div>
+        <div class="divagregar">
+            Ingrese la direccion del proveedor: <input type="text" id="direccion">
+        </div>
+        <div class="divagregar">
+            Ingrese el telefono del proveedor: <input type="text" id="telefono">
+        </div>
+        <div class="divagregar">
+            Ingrese el email del proveedor: <input type="text" id="email">
+        </div>
+        <div class="divagregar">
+            <button id="eliminar">Eliminar proveedor con ID</button>
+        </div>
+
+
     </main>  
     <script src="js/db.js"></script>
-    <script src="js/inventario.js"></script>
+    <script src="js/agregar_proveedor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
