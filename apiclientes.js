@@ -1,3 +1,4 @@
+//Conexion a la base de datos 
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres@tallertbdpostgres',
@@ -7,6 +8,7 @@ const pool = new Pool({
   port: 5432,
 })
 
+//Funcion para agregar un cliente segun el formulario
 const addCliente = (request, response) => {
   const { id_cliente, nombre, direccion, telefono, email } = request.body
 
@@ -18,6 +20,7 @@ const addCliente = (request, response) => {
   })
 }
 
+//Selecciona toda la tabla clientes para su visualizacion
   const getClientes = (request, response) => {
     pool.query('SELECT * FROM cliente', (error, results) => {
       if (error) {
@@ -26,6 +29,8 @@ const addCliente = (request, response) => {
       response.status(200).json(results.rows)
     })
   }
+
+  //Funcion para borrar un cliente segun su id
   const borrarCliente = (request, response) => {
     const id = parseInt(request.params.id)
   
@@ -37,6 +42,7 @@ const addCliente = (request, response) => {
     })
   }
 
+  //Funcion para actualizar los datos de un cliente segun su id
   const updateCliente = (request, response) => {
     const id = parseInt(request.params.id)
     const { nombre, direccion,telefono ,email} = request.body
@@ -52,6 +58,8 @@ const addCliente = (request, response) => {
       }
     )
   }
+
+  //Exportar las funciones para usarlas en app.js
   module.exports = {
     addCliente, 
     getClientes,

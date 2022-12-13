@@ -1,3 +1,4 @@
+//Conexion a la base de datos
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres@tallertbdpostgres',
@@ -7,6 +8,7 @@ const pool = new Pool({
   port: 5432,
 })
 
+//Funcion para obtener la tabla proveedor para su visualizacion
 const getProveedores = (request, response) => {
     pool.query('SELECT * FROM proveedor', (error, results) => {
       if (error) {
@@ -16,6 +18,7 @@ const getProveedores = (request, response) => {
     })
 }
 
+//Funcion para agregar un proveedor segun el formulario
 const addProveedor = (request, response) => {
   const { id_proveedor, nombre, tipo_persona, direccion, telefono,email } = request.body
 
@@ -27,6 +30,7 @@ const addProveedor = (request, response) => {
   })
 }
 
+//Funcion para borrar un proveedor segun su ID
 const borrarProveedor = (request, response) => {
   const id = parseInt(request.params.id)
 
@@ -38,6 +42,7 @@ const borrarProveedor = (request, response) => {
   })
 }
 
+//Funcion para actualizar un proveedor segun su ID
 const updateProveedor = (request, response) => {
   const id = parseInt(request.params.id)
   const { nombre, tipo_persona, direccion,telefono ,email} = request.body
@@ -54,6 +59,7 @@ const updateProveedor = (request, response) => {
   )
 }
 
+//Exportar las funciones parta usarlas en app.js
 module.exports = {
     getProveedores,
     addProveedor,

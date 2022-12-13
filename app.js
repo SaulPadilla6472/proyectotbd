@@ -1,3 +1,4 @@
+//Se inicializan las dependencias (extensiones) del servidor
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +7,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
+//Se inicializan las API importando los archivos .JS
 var apiclientes = require('./apiclientes')
 var apiproveedor = require('./apiproveedor')
 var apiinventario = require('./apiinventario')
@@ -13,9 +15,11 @@ var apiarticulo = require('./apiarticulo')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//Se inicializa la aplicacion express (Framework del server node JS)
 var app = express();
 app.use(cors())
 
+//Inicializacion automatica del setup del server
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -32,6 +36,7 @@ app.use(
   })
 )
 
+//Se le asigna un URL a cada API para poder acceder a ellas
 app.use('/', indexRouter);
 app.get('/articulo/:codigo', apiarticulo.getArticulo);
 app.use('/inv', apiinventario.getInventario);
